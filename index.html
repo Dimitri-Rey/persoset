@@ -406,8 +406,8 @@
             <p>NVIDIA Laptop GPU</p>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="240">0</span><span class="stat-unit">Hz</span>
-            <p>Dalle QHD+ Mini-LED</p>
+            <span class="stat-num" data-count="49">0</span><span class="stat-unit">"</span>
+            <p>Odyssey OLED G9 240 Hz</p>
           </div>
         </div>
       </div>
@@ -1014,12 +1014,127 @@
               <text x="100" y="118" text-anchor="middle" font-family="Arial" font-size="4" fill="#5a6278" letter-spacing="1">M.2 2280 · NVMe</text>
             </svg>
           </div>
-          <h3>STORAGE</h3>
-          <p class="spec-model">NVMe PCIe Gen4</p>
+        <article class="spec-card" data-tilt>
+          <div class="spec-visual">
+            <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="mon-bezel" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1f2e"/>
+                  <stop offset="100%" stop-color="#050608"/>
+                </linearGradient>
+                <linearGradient id="mon-scr" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0a1040"/>
+                  <stop offset="30%" stop-color="#3d1a78"/>
+                  <stop offset="60%" stop-color="#7c1f6b"/>
+                  <stop offset="100%" stop-color="#0a5e6b"/>
+                </linearGradient>
+                <linearGradient id="mon-stand" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3a4258"/>
+                  <stop offset="100%" stop-color="#0a0b10"/>
+                </linearGradient>
+                <linearGradient id="mon-glass" x1="0" y1="0" x2="0.4" y2="1">
+                  <stop offset="0%" stop-color="#fff" stop-opacity="0.18"/>
+                  <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+                </linearGradient>
+                <radialGradient id="mon-core" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00e0d3" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#00e0d3" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Core-lighting halo behind the monitor -->
+              <ellipse cx="100" cy="60" rx="95" ry="24" fill="url(#mon-core)" opacity="0.45"/>
+
+              <!-- Curved monitor body (1800R) -->
+              <!-- Bezel back -->
+              <path d="M 5 28
+                       Q 100 18 195 28
+                       L 195 82
+                       Q 100 92 5 82 Z"
+                    fill="url(#mon-bezel)"/>
+              <!-- Front face (screen panel) -->
+              <path d="M 8 30
+                       Q 100 20 192 30
+                       L 192 80
+                       Q 100 90 8 80 Z"
+                    fill="#050608"/>
+              <!-- Screen content (curved) -->
+              <path d="M 12 33
+                       Q 100 24 188 33
+                       L 188 77
+                       Q 100 86 12 77 Z"
+                    fill="url(#mon-scr)"/>
+              <!-- Screen UI: three windows (simulating ultrawide split) -->
+              <g opacity="0.9">
+                <!-- Left: file explorer -->
+                <path d="M 16 36 Q 50 32 50 32 L 50 75 Q 50 75 16 78 Z" fill="#000" opacity="0.45"/>
+                <rect x="19" y="39" width="28" height="2" fill="#7c5cff" opacity="0.7"/>
+                <rect x="19" y="43" width="20" height="1.5" fill="#fff" opacity="0.3"/>
+                <rect x="19" y="47" width="22" height="1.5" fill="#fff" opacity="0.3"/>
+                <rect x="19" y="51" width="18" height="1.5" fill="#fff" opacity="0.3"/>
+                <rect x="19" y="57" width="28" height="2" fill="#00e0d3" opacity="0.7"/>
+                <rect x="19" y="61" width="20" height="1.5" fill="#fff" opacity="0.3"/>
+                <rect x="19" y="65" width="24" height="1.5" fill="#fff" opacity="0.3"/>
+                <rect x="19" y="69" width="18" height="1.5" fill="#fff" opacity="0.3"/>
+
+                <!-- Middle: code editor -->
+                <path d="M 54 32 Q 100 27 100 27 L 100 82 Q 100 82 54 78 Z" fill="#000" opacity="0.55"/>
+                <g font-family="monospace" font-size="2.4" fill="#9099ad">
+                  <text x="57" y="40"><tspan fill="#ff4d8d">const</tspan> <tspan fill="#fff">monitor</tspan> <tspan fill="#9099ad">=</tspan> <tspan fill="#00e0d3">{</tspan></text>
+                  <text x="57" y="45">  <tspan fill="#7c5cff">model</tspan>: <tspan fill="#fcf26d">'G9'</tspan>,</text>
+                  <text x="57" y="50">  <tspan fill="#7c5cff">size</tspan>: <tspan fill="#fcf26d">'49"'</tspan>,</text>
+                  <text x="57" y="55">  <tspan fill="#7c5cff">res</tspan>: <tspan fill="#fcf26d">'5120x1440'</tspan></text>
+                  <text x="57" y="60"><tspan fill="#00e0d3">}</tspan></text>
+                  <text x="57" y="70" fill="#28c840">● ready · 240Hz</text>
+                </g>
+
+                <!-- Right: chart / dashboard -->
+                <path d="M 104 27 Q 150 27 184 33 L 184 77 Q 150 82 104 82 Z" fill="#000" opacity="0.4"/>
+                <rect x="108" y="31" width="30" height="2" fill="#ff4d8d" opacity="0.7"/>
+                <polyline points="109,68 115,60 121,64 128,52 135,56 142,45 150,50 157,42 164,48 172,38 180,42"
+                          stroke="#00e0d3" stroke-width="1" fill="none" opacity="0.9"/>
+                <polyline points="109,72 115,68 121,70 128,65 135,67 142,62 150,64 157,60 164,63 172,58 180,61"
+                          stroke="#7c5cff" stroke-width="0.8" fill="none" opacity="0.8"/>
+                <!-- bars -->
+                <g fill="#ff4d8d" opacity="0.6">
+                  <rect x="110" y="74" width="3" height="3"/>
+                  <rect x="115" y="72" width="3" height="5"/>
+                  <rect x="120" y="70" width="3" height="7"/>
+                  <rect x="125" y="73" width="3" height="4"/>
+                  <rect x="130" y="68" width="3" height="9"/>
+                </g>
+              </g>
+
+              <!-- Glass specular on curved screen -->
+              <path d="M 12 33 Q 100 24 188 33 L 188 77 Q 100 86 12 77 Z"
+                    fill="url(#mon-glass)" pointer-events="none"/>
+
+              <!-- Stand column -->
+              <path d="M 92 88 L 108 88 L 106 108 L 94 108 Z" fill="url(#mon-stand)"/>
+              <!-- Cable hole -->
+              <ellipse cx="100" cy="95" rx="3" ry="1.5" fill="#050608"/>
+              <!-- T-shaped foot -->
+              <path d="M 70 108 L 130 108 L 128 114 L 72 114 Z" fill="url(#mon-stand)"/>
+              <rect x="70" y="114" width="60" height="2" rx="1" fill="#050608"/>
+
+              <!-- Floor shadow -->
+              <ellipse cx="100" cy="118" rx="50" ry="2.5" fill="#000" opacity="0.5"/>
+
+              <!-- Samsung logo -->
+              <text x="100" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" font-weight="700" fill="#5a6278" letter-spacing="1.5">SAMSUNG</text>
+              <!-- Size badge -->
+              <g transform="translate(165 45)">
+                <rect width="20" height="10" rx="2" fill="#7c5cff" opacity="0.9"/>
+                <text x="10" y="7" text-anchor="middle" font-family="Arial" font-size="5" font-weight="800" fill="#fff">49"</text>
+              </g>
+            </svg>
+          </div>
+          <h3>DISPLAY</h3>
+          <p class="spec-model">Samsung Odyssey OLED G9</p>
           <ul>
-            <li>SSD haute vitesse</li>
-            <li>Boot & chargements instantanés</li>
-            <li>Slot secondaire dispo</li>
+            <li>49" QD-OLED curved 1800R</li>
+            <li>5120 × 1440 @ 240 Hz · 0.03 ms</li>
+            <li>HDR True Black 400 · DisplayHDR 400</li>
           </ul>
         </article>
       </div>
@@ -1029,8 +1144,8 @@
     <section id="peripherals" class="section section-alt">
       <div class="section-header">
         <p class="eyebrow">02 — Le combo</p>
-        <h2>Laptop <span class="gradient-text">+ Oasis</span></h2>
-        <p class="section-desc">L'idée : un laptop nomade qui, une fois posé sur le bureau, se transforme en desktop surpuissant grâce au dock watercooling externe.</p>
+        <h2>Laptop <span class="gradient-text">+ Oasis + G9</span></h2>
+        <p class="section-desc">L'idée : un laptop nomade qui, une fois posé sur le bureau, se transforme en station cinéma grâce au dock watercooling et au 49 pouces ultrawide.</p>
       </div>
 
       <div class="periph-grid">
@@ -1053,9 +1168,9 @@
         </div>
 
         <div class="periph-card">
-          <div class="tag">Écran</div>
-          <h3>Dalle interne QHD+ 240 Hz</h3>
-          <p>16 pouces haute densité, fluide comme de l'huile, calibrée pour la création.</p>
+          <div class="tag">Écran principal</div>
+          <h3>Samsung Odyssey OLED G9 49"</h3>
+          <p>Ultrawide QD-OLED 5120×1440 @ 240 Hz, 1800R. Réf. LS49CG954EUXEN. Immersion totale pour le gaming et multi-fenêtres pour le dev.</p>
         </div>
 
         <div class="periph-card">
@@ -1147,7 +1262,8 @@
 <span class="key">GPU:</span>      NVIDIA GeForce RTX 5090 Laptop
 <span class="key">Memory:</span>   64 GiB DDR5
 <span class="key">Cooling:</span>  XMG Oasis — external water loop
-<span class="key">Display:</span>  2560x1600 @ 240Hz Mini-LED
+<span class="key">Display:</span>  Samsung Odyssey OLED G9 49" · 5120x1440 @ 240Hz QD-OLED
+<span class="key">         </span>  + dalle interne 2560x1600 @ 240Hz
 <span class="key">Uptime:</span>   <span id="uptime">calcul...</span>
 <span class="prompt">➜</span> <span class="path">~/setup</span> <span class="cursor-blink">█</span></code></pre>
       </div>
@@ -1200,11 +1316,21 @@
               <!-- LED strip on wall (RGB ambient) -->
               <rect y="8" width="240" height="1" fill="#7c5cff" opacity="0.8"/>
 
-              <!-- External Monitor -->
-              <rect x="70" y="30" width="100" height="60" fill="#050608" rx="1"/>
-              <rect x="73" y="33" width="94" height="54" fill="url(#gLapScr)"/>
-              <rect x="118" y="90" width="4" height="12" fill="#1a1f2e"/>
-              <rect x="105" y="100" width="30" height="3" rx="1" fill="#1a1f2e"/>
+              <!-- Samsung Odyssey OLED G9 49" ultrawide curved -->
+              <path d="M 35 35 Q 120 25 205 35 L 205 88 Q 120 98 35 88 Z" fill="#050608"/>
+              <path d="M 38 37 Q 120 28 202 37 L 202 86 Q 120 95 38 86 Z" fill="url(#gLapScr)"/>
+              <!-- Split-screen UI hint -->
+              <path d="M 40 39 Q 78 32 78 32 L 78 90 Q 78 90 40 84 Z" fill="#000" opacity="0.35"/>
+              <path d="M 82 32 Q 120 28 120 28 L 120 92 Q 120 92 82 90 Z" fill="#000" opacity="0.45"/>
+              <path d="M 124 28 Q 162 32 200 37 L 200 86 Q 162 92 124 92 Z" fill="#000" opacity="0.35"/>
+              <!-- curved glass specular -->
+              <path d="M 38 37 Q 120 28 202 37 L 202 50 Q 120 42 38 50 Z" fill="#fff" opacity="0.08"/>
+              <!-- Core lighting glow on wall behind -->
+              <ellipse cx="120" cy="62" rx="100" ry="18" fill="#00e0d3" opacity="0.25"/>
+              <!-- Stand -->
+              <path d="M 114 90 L 126 90 L 125 104 L 115 104 Z" fill="#1a1f2e"/>
+              <rect x="95" y="104" width="50" height="4" rx="1" fill="#1a1f2e"/>
+              <text x="120" y="87" text-anchor="middle" font-family="Arial" font-size="2.5" font-weight="700" fill="#5a6278">SAMSUNG</text>
 
               <!-- Laptop on desk left -->
               <g transform="translate(10 100)">
