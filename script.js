@@ -28,30 +28,7 @@
     );
   }
 
-  // ---------- Custom cursor ----------
-  const dot = document.querySelector(".cursor-dot");
-  const ring = document.querySelector(".cursor-ring");
-  let mx = window.innerWidth / 2;
-  let my = window.innerHeight / 2;
-  let rx = mx, ry = my;
-
-  window.addEventListener("mousemove", (e) => {
-    mx = e.clientX; my = e.clientY;
-    if (dot) { dot.style.left = mx + "px"; dot.style.top = my + "px"; }
-  });
-
-  const animateCursor = () => {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    if (ring) ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateCursor);
-  };
-  animateCursor();
-
-  document.querySelectorAll("a, button, .spec-card, .periph-card, .chip, .gallery-item").forEach((el) => {
-    el.addEventListener("mouseenter", () => ring && ring.classList.add("hover"));
-    el.addEventListener("mouseleave", () => ring && ring.classList.remove("hover"));
-  });
+  // Custom cursor removed for performance — native cursor used instead.
 
   // ---------- Reveal on scroll ----------
   const revealTargets = document.querySelectorAll(
@@ -97,22 +74,35 @@
   );
   counters.forEach((c) => counterIO.observe(c));
 
-  // ---------- Spec card tilt + spotlight ----------
-  document.querySelectorAll("[data-tilt]").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;
-      const py = (e.clientY - r.top) / r.height;
-      const rx = (py - 0.5) * -6;
-      const ry = (px - 0.5) * 8;
-      card.style.transform = `translateY(-4px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-      card.style.setProperty("--mx", px * 100 + "%");
-      card.style.setProperty("--my", py * 100 + "%");
+  // ---------- Spec card tilt + spotlight (rAF-throttled) ----------
+  if (!("ontouchstart" in window)) {
+    document.querySelectorAll("[data-tilt]").forEach((card) => {
+      let pending = false;
+      let lastEvt = null;
+      const handle = () => {
+        pending = false;
+        if (!lastEvt) return;
+        const r = card.getBoundingClientRect();
+        const px = (lastEvt.clientX - r.left) / r.width;
+        const py = (lastEvt.clientY - r.top) / r.height;
+        const rx = (py - 0.5) * -5;
+        const ry = (px - 0.5) * 6;
+        card.style.transform = `translateY(-4px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        card.style.setProperty("--mx", px * 100 + "%");
+        card.style.setProperty("--my", py * 100 + "%");
+      };
+      card.addEventListener("mousemove", (e) => {
+        lastEvt = e;
+        if (!pending) {
+          pending = true;
+          requestAnimationFrame(handle);
+        }
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
     });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
-  });
+  }
 
   // ---------- Uptime in terminal ----------
   const uptimeEl = document.getElementById("uptime");
@@ -129,16 +119,19 @@
     setInterval(updateUptime, 1000);
   }
 
-  // ---------- Particle background ----------
+  // ---------- Particle background (lightweight) ----------
   const canvas = document.getElementById("bg-canvas");
   if (!canvas) return;
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d", { alpha: true });
   let W, H, particles = [];
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isMobile = window.matchMedia("(max-width: 900px), (pointer: coarse)").matches;
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
   const resize = () => {
-    W = canvas.width = window.innerWidth * devicePixelRatio;
-    H = canvas.height = window.innerHeight * devicePixelRatio;
+    W = canvas.width = window.innerWidth * dpr;
+    H = canvas.height = window.innerHeight * dpr;
     canvas.style.width = window.innerWidth + "px";
     canvas.style.height = window.innerHeight + "px";
   };
@@ -146,30 +139,29 @@
   window.addEventListener("resize", resize);
 
   const COLORS = ["#7c5cff", "#00e0d3", "#ff4d8d"];
-  const count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 22000));
+  // aggressively reduced: no O(n²) line linking
+  const count = isMobile ? 18 : 32;
 
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * W,
       y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
-      vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
-      r: (Math.random() * 1.8 + 0.4) * devicePixelRatio,
+      vx: (Math.random() - 0.5) * 0.18 * dpr,
+      vy: (Math.random() - 0.5) * 0.18 * dpr,
+      r: (Math.random() * 2.2 + 0.8) * dpr,
       c: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: Math.random() * 0.5 + 0.4,
     });
   }
 
-  let mouseX = -9999, mouseY = -9999;
-  window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX * devicePixelRatio;
-    mouseY = e.clientY * devicePixelRatio;
+  let running = true;
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running) draw();
   });
-  window.addEventListener("mouseleave", () => { mouseX = -9999; mouseY = -9999; });
-
-  const maxDist = 140 * devicePixelRatio;
-  const mouseRange = 200 * devicePixelRatio;
 
   const draw = () => {
+    if (!running) return;
     ctx.clearRect(0, 0, W, H);
 
     for (let i = 0; i < particles.length; i++) {
@@ -179,46 +171,15 @@
       if (p.x < 0 || p.x > W) p.vx *= -1;
       if (p.y < 0 || p.y > H) p.vy *= -1;
 
-      // mouse attraction
-      const dx = mouseX - p.x;
-      const dy = mouseY - p.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < mouseRange) {
-        const force = (1 - d / mouseRange) * 0.4;
-        p.x += (dx / d) * force;
-        p.y += (dy / d) * force;
-      }
-
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = p.c;
-      ctx.globalAlpha = 0.75;
+      ctx.globalAlpha = p.alpha;
       ctx.fill();
-    }
-
-    // connecting lines
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i];
-        const b = particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < maxDist * maxDist) {
-          const alpha = 1 - Math.sqrt(d2) / maxDist;
-          ctx.strokeStyle = a.c;
-          ctx.globalAlpha = alpha * 0.25;
-          ctx.lineWidth = 0.6 * devicePixelRatio;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
     }
 
     ctx.globalAlpha = 1;
     if (!prefersReduced) requestAnimationFrame(draw);
   };
-  draw();
+  if (!prefersReduced) draw();
 })();

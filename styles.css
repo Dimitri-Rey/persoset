@@ -37,7 +37,6 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
 }
 
 body::before {
@@ -45,18 +44,19 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 10%, rgba(124, 92, 255, 0.18), transparent 55%),
-    radial-gradient(ellipse at 80% 40%, rgba(0, 224, 211, 0.12), transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(255, 77, 141, 0.12), transparent 55%);
+    radial-gradient(ellipse at 20% 10%, rgba(124, 92, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse at 80% 40%, rgba(0, 224, 211, 0.09), transparent 55%);
   z-index: -1;
   pointer-events: none;
+  will-change: auto;
 }
 
 #bg-canvas {
   position: fixed;
   inset: 0;
   z-index: -2;
-  opacity: 0.55;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 a {
@@ -69,39 +69,8 @@ img {
   display: block;
 }
 
-/* ----- Custom cursor ----- */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-}
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-}
-.cursor-ring {
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  transition: transform 0.18s var(--ease), width 0.2s, height 0.2s, border-color 0.2s;
-}
-.cursor-ring.hover {
-  width: 56px;
-  height: 56px;
-  border-color: var(--accent-2);
-}
-
-@media (hover: none), (pointer: coarse) {
-  body { cursor: auto; }
-  .cursor-dot, .cursor-ring { display: none; }
-}
+/* Custom cursor disabled — it caused repaints and lag. Using native cursor. */
+.cursor-dot, .cursor-ring { display: none !important; }
 
 /* ----- Navbar ----- */
 .navbar {
@@ -246,7 +215,7 @@ main {
   font-weight: 500;
   font-size: 0.95rem;
   transition: transform 0.3s var(--ease), box-shadow 0.3s;
-  cursor: none;
+  cursor: pointer;
   border: 1px solid transparent;
   position: relative;
   overflow: hidden;
@@ -360,6 +329,18 @@ main {
   letter-spacing: 0.12em;
 }
 
+.hero-illus {
+  margin: 70px auto 0;
+  max-width: 720px;
+  padding: 0 20px;
+  filter: drop-shadow(0 30px 60px rgba(124, 92, 255, 0.3));
+}
+.hero-illus svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -454,6 +435,23 @@ main {
 .spec-icon svg {
   width: 24px;
   height: 24px;
+}
+.spec-visual {
+  width: 100%;
+  aspect-ratio: 200 / 130;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.06), rgba(0, 224, 211, 0.04));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+}
+.spec-visual svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .spec-card h3 {
   font-family: "JetBrains Mono", monospace;
@@ -677,53 +675,57 @@ main {
   overflow: hidden;
   position: relative;
   border: 1px solid var(--border);
-  cursor: none;
+  cursor: pointer;
 }
 .gallery-inner {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg,
-      hsl(var(--hue), 70%, 25%) 0%,
-      hsl(calc(var(--hue) + 40), 65%, 15%) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 22px;
+  background: linear-gradient(180deg,
+    hsl(var(--hue), 30%, 10%) 0%,
+    hsl(calc(var(--hue) + 30), 25%, 6%) 100%);
   transition: transform 0.8s var(--ease);
+  overflow: hidden;
 }
-.gallery-inner::before {
-  content: "";
+.gallery-inner > svg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 30% 20%, hsla(var(--hue), 90%, 65%, 0.4), transparent 50%),
-    radial-gradient(circle at 70% 80%, hsla(calc(var(--hue) + 60), 90%, 60%, 0.3), transparent 50%);
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .gallery-inner::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,0.03) 2px 3px),
-    repeating-linear-gradient(90deg, transparent 0 2px, rgba(255,255,255,0.03) 2px 3px);
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
 }
 .gallery-num {
+  position: absolute;
+  top: 16px;
+  left: 18px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.2em;
-  z-index: 1;
+  z-index: 2;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
 }
 .gallery-label {
-  font-size: 1.3rem;
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.01em;
-  z-index: 1;
+  z-index: 2;
 }
 .gallery-item:hover .gallery-inner {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 /* ==========================================================
@@ -836,4 +838,11 @@ footer {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  #bg-canvas { display: none; }
+}
+
+@media (max-width: 900px) {
+  #bg-canvas { opacity: 0.35; }
+  .spec-card, .periph-card { transform: none !important; }
+  .hero-illus { margin-top: 50px; }
 }
