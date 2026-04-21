@@ -330,16 +330,26 @@ main {
 }
 
 .hero-illus {
+  position: relative;
   margin: 70px auto 0;
   max-width: 720px;
   padding: 0 20px;
   filter: drop-shadow(0 30px 60px rgba(124, 92, 255, 0.3));
 }
-.hero-illus svg {
+.hero-illus svg,
+.hero-illus img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 16px;
 }
+.hero-illus .hero-photo {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+/* Quand l'image existe, elle remplace le SVG */
+.hero-illus .hero-photo + svg { display: none; }
 
 .scroll-indicator {
   position: absolute;
@@ -437,6 +447,7 @@ main {
   height: 24px;
 }
 .spec-visual {
+  position: relative;
   width: 100%;
   aspect-ratio: 200 / 130;
   background: linear-gradient(135deg, rgba(124, 92, 255, 0.06), rgba(0, 224, 211, 0.04));
@@ -453,6 +464,17 @@ main {
   height: 100%;
   display: block;
 }
+.spec-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  border-radius: 11px;
+}
+/* When the img loaded, hide the SVG fallback behind it */
+.spec-visual img + svg { opacity: 0; }
 .spec-card h3 {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.78rem;
@@ -686,13 +708,18 @@ main {
   transition: transform 0.8s var(--ease);
   overflow: hidden;
 }
-.gallery-inner > svg {
+.gallery-inner > svg,
+.gallery-inner > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
 }
+/* Real photo takes priority over SVG */
+.gallery-inner > img { z-index: 1; }
+.gallery-inner > img + svg { opacity: 0; }
 .gallery-inner::after {
   content: "";
   position: absolute;

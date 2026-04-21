@@ -52,8 +52,9 @@
           <a href="#gallery" class="btn btn-ghost">Voir la galerie</a>
         </div>
 
-        <!-- Hero illustration: laptop + Oasis -->
+        <!-- Hero illustration: real photo if available, else SVG fallback -->
         <div class="hero-illus" aria-hidden="true">
+          <img src="img/hero.jpg" alt="" class="hero-photo" onerror="this.remove()" loading="lazy" />
           <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
@@ -209,6 +210,7 @@
       <div class="specs-grid">
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/recoil16.jpg" alt="PC Spécialiste Recoil 16" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s1" x1="0" y1="0" x2="1" y2="1">
@@ -232,6 +234,7 @@
 
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/cpu-275hx.jpg" alt="Intel Core Ultra 9 275HX" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s2" x1="0" y1="0" x2="1" y2="1">
@@ -270,6 +273,7 @@
 
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/rtx5090.jpg" alt="NVIDIA RTX 5090 Laptop" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s3" x1="0" y1="0" x2="0" y2="1">
@@ -312,6 +316,7 @@
 
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/ram-ddr5.jpg" alt="64 GB DDR5" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s4" x1="0" y1="0" x2="1" y2="0">
@@ -359,6 +364,7 @@
 
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/oasis.jpg" alt="XMG Oasis" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s5" x1="0" y1="0" x2="0" y2="1">
@@ -404,6 +410,7 @@
 
         <article class="spec-card" data-tilt>
           <div class="spec-visual">
+            <img src="img/nvme.jpg" alt="NVMe PCIe Gen4" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="s6" x1="0" y1="0" x2="1" y2="1">
@@ -581,6 +588,7 @@
         <!-- Vue du setup complet -->
         <div class="gallery-item" style="--hue: 260">
           <div class="gallery-inner">
+            <img src="img/gallery-setup.jpg" alt="Setup complet" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#0d0f16"/>
               <!-- bureau -->
@@ -608,6 +616,7 @@
         <!-- Oasis en action -->
         <div class="gallery-item" style="--hue: 180">
           <div class="gallery-inner">
+            <img src="img/gallery-oasis.jpg" alt="XMG Oasis" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#0a1118"/>
               <defs>
@@ -640,6 +649,7 @@
         <!-- Clavier RGB -->
         <div class="gallery-item" style="--hue: 310">
           <div class="gallery-inner">
+            <img src="img/gallery-keyboard.jpg" alt="Clavier RGB" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#08090f"/>
               <g transform="translate(20 60)">
@@ -693,6 +703,7 @@
         <!-- Vue de dessus bureau -->
         <div class="gallery-item" style="--hue: 220">
           <div class="gallery-inner">
+            <img src="img/gallery-topdown.jpg" alt="Vue top-down du bureau" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#13171e"/>
               <!-- wood desk texture -->
@@ -729,6 +740,7 @@
         <!-- Tubes watercooling -->
         <div class="gallery-item" style="--hue: 150">
           <div class="gallery-inner">
+            <img src="img/gallery-liquid.jpg" alt="Circuit liquide" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#070a0d"/>
               <defs>
@@ -759,6 +771,7 @@
         <!-- Terminal / code -->
         <div class="gallery-item" style="--hue: 30">
           <div class="gallery-inner">
+            <img src="img/gallery-code.jpg" alt="Terminal et code" onerror="this.remove()" loading="lazy" />
             <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
               <rect width="240" height="180" fill="#0a0b10"/>
               <!-- window -->
