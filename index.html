@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Setup — Showcase</title>
+  <meta name="description" content="Présentation de mon setup gaming / dev : hardware, périphériques, software et ambiance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">&lt;</span>setup<span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
+    </a>
+    <nav>
+      <a href="#hero">Accueil</a>
+      <a href="#specs">Specs</a>
+      <a href="#peripherals">Périphériques</a>
+      <a href="#software">Software</a>
+      <a href="#gallery">Galerie</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">// hello, welcome to my battle station</p>
+        <h1 class="hero-title">
+          <span class="gradient-text">MON</span>
+          <span class="outline-text">SETUP</span>
+        </h1>
+        <p class="hero-sub">
+          Un laptop <span class="accent">PC Spécialiste Recoil 16</span> boosté par le
+          <span class="accent">XMG Oasis</span> — la puissance d'une tour, la mobilité d'un portable.
+          Pensé pour <span class="accent">le gaming</span>, <span class="accent">le code</span> et
+          <span class="accent">la création</span>.
+        </p>
+        <div class="hero-cta">
+          <a href="#specs" class="btn btn-primary">
+            <span>Découvrir</span>
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#gallery" class="btn btn-ghost">Voir la galerie</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-count="24">0</span><span class="stat-unit">cores</span>
+            <p>Core Ultra 9 275HX</p>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="64">0</span><span class="stat-unit">GB</span>
+            <p>RAM DDR5</p>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="5090" data-fast="true">0</span><span class="stat-unit">RTX</span>
+            <p>NVIDIA Laptop GPU</p>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="240">0</span><span class="stat-unit">Hz</span>
+            <p>Dalle QHD+ Mini-LED</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>scroll</span>
+        <div class="line"></div>
+      </div>
+    </section>
+
+    <!-- SPECS -->
+    <section id="specs" class="section">
+      <div class="section-header">
+        <p class="eyebrow">01 — Hardware</p>
+        <h2>La <span class="gradient-text">machine</span></h2>
+        <p class="section-desc">Un laptop ultra-performant transformé en bête de course grâce au watercooling externe XMG Oasis. La mobilité du portable, les performances d'un desktop.</p>
+      </div>
+
+      <div class="specs-grid">
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 3h12l4 4v14H4z M16 3v4h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>LAPTOP</h3>
+          <p class="spec-model">PC Spécialiste Recoil 16</p>
+          <ul>
+            <li>Châssis 16" gaming premium</li>
+            <li>Dalle QHD+ 240 Hz</li>
+            <li>Clavier RGB per-key</li>
+          </ul>
+        </article>
+
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="8" y="8" width="8" height="8" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 9h2M2 15h2M20 9h2M20 15h2M9 2v2M15 2v2M9 20v2M15 20v2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>CPU</h3>
+          <p class="spec-model">Intel Core Ultra 9 275HX</p>
+          <ul>
+            <li>24 cœurs (8P + 16E) / 24 threads</li>
+            <li>Boost jusqu'à 5.4 GHz</li>
+            <li>Architecture Arrow Lake-HX</li>
+          </ul>
+        </article>
+
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18v10H3z M7 19h10 M9 15v4 M15 15v4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>GPU</h3>
+          <p class="spec-model">NVIDIA RTX 5090 Laptop</p>
+          <ul>
+            <li>24 GB GDDR7</li>
+            <li>DLSS 4 + Neural Rendering</li>
+            <li>Architecture Blackwell</li>
+          </ul>
+        </article>
+
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M6 12h.01 M10 12h.01 M14 12h.01 M18 12h.01" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>RAM</h3>
+          <p class="spec-model">64 GB DDR5</p>
+          <ul>
+            <li>Dual channel SO-DIMM</li>
+            <li>Haute fréquence</li>
+            <li>Parfait pour le multitâche lourd</li>
+          </ul>
+        </article>
+
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20 M2 12h20 M5 5l14 14 M19 5L5 19" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <h3>COOLING</h3>
+          <p class="spec-model">XMG Oasis</p>
+          <ul>
+            <li>Watercooling externe dédié</li>
+            <li>Branchement rapide, liquide pur</li>
+            <li>Températures desktop-level</li>
+          </ul>
+        </article>
+
+        <article class="spec-card" data-tilt>
+          <div class="spec-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z M4 10h16 M8 7h.01 M8 14h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>STORAGE</h3>
+          <p class="spec-model">NVMe PCIe Gen4</p>
+          <ul>
+            <li>SSD haute vitesse</li>
+            <li>Boot & chargements instantanés</li>
+            <li>Slot secondaire dispo</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PERIPHERALS -->
+    <section id="peripherals" class="section section-alt">
+      <div class="section-header">
+        <p class="eyebrow">02 — Le combo</p>
+        <h2>Laptop <span class="gradient-text">+ Oasis</span></h2>
+        <p class="section-desc">L'idée : un laptop nomade qui, une fois posé sur le bureau, se transforme en desktop surpuissant grâce au dock watercooling externe.</p>
+      </div>
+
+      <div class="periph-grid">
+        <div class="periph-card big">
+          <div class="tag">Pièce maîtresse</div>
+          <h3>PC Spécialiste Recoil 16</h3>
+          <p>Laptop 16" taillé pour la perf : Ultra 9 275HX, RTX 5090 Laptop, 64 Go DDR5. Châssis alu, aération optimisée, dalle rapide — prêt à être poussé au max.</p>
+          <div class="periph-meta">
+            <span>Ultra 9 275HX</span>
+            <span>RTX 5090</span>
+            <span>64 GB DDR5</span>
+            <span>16" 240Hz</span>
+          </div>
+        </div>
+
+        <div class="periph-card">
+          <div class="tag">Watercooling externe</div>
+          <h3>XMG Oasis</h3>
+          <p>Dock liquide qui se branche au laptop : refroidissement CPU direct, gain de 20°C+, clocks maintenus, silence.</p>
+        </div>
+
+        <div class="periph-card">
+          <div class="tag">Écran</div>
+          <h3>Dalle interne QHD+ 240 Hz</h3>
+          <p>16 pouces haute densité, fluide comme de l'huile, calibrée pour la création.</p>
+        </div>
+
+        <div class="periph-card">
+          <div class="tag">Audio</div>
+          <h3>Son spatial + DTS:X</h3>
+          <p>Haut-parleurs stéréo orientés + sortie casque DAC-ready pour le gaming immersif.</p>
+        </div>
+
+        <div class="periph-card">
+          <div class="tag">Connectique</div>
+          <h3>Thunderbolt 5 + USB-C PD</h3>
+          <p>Un seul câble pour l'écran, la data et l'alim — setup propre en mode docking.</p>
+        </div>
+
+        <div class="periph-card big">
+          <div class="tag">Ergonomie</div>
+          <h3>Mode nomade ↔ mode station</h3>
+          <p>En déplacement : laptop seul, autonome et assez puissant pour tout encaisser. Au bureau : Oasis branché, watercooling actif, la machine se libère totalement et tient la charge en continu — rendu vidéo, compilation, gaming AAA.</p>
+          <div class="periph-meta">
+            <span>Nomade</span>
+            <span>Docking</span>
+            <span>Full power</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFTWARE -->
+    <section id="software" class="section">
+      <div class="section-header">
+        <p class="eyebrow">03 — Software</p>
+        <h2>Les <span class="gradient-text">outils</span></h2>
+        <p class="section-desc">L'environnement logiciel — dev, création, gaming.</p>
+      </div>
+
+      <div class="software-stack">
+        <div class="stack-col">
+          <h4>Dev</h4>
+          <div class="chips">
+            <span class="chip">VS Code</span>
+            <span class="chip">Neovim</span>
+            <span class="chip">Claude Code</span>
+            <span class="chip">Ghostty</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Git</span>
+          </div>
+        </div>
+        <div class="stack-col">
+          <h4>Création</h4>
+          <div class="chips">
+            <span class="chip">Figma</span>
+            <span class="chip">Photoshop</span>
+            <span class="chip">Premiere Pro</span>
+            <span class="chip">DaVinci Resolve</span>
+            <span class="chip">Blender</span>
+          </div>
+        </div>
+        <div class="stack-col">
+          <h4>Gaming</h4>
+          <div class="chips">
+            <span class="chip">Steam</span>
+            <span class="chip">Discord</span>
+            <span class="chip">OBS Studio</span>
+            <span class="chip">NVIDIA App</span>
+          </div>
+        </div>
+        <div class="stack-col">
+          <h4>OS & Tools</h4>
+          <div class="chips">
+            <span class="chip">Windows 11</span>
+            <span class="chip">WSL2 Ubuntu</span>
+            <span class="chip">PowerToys</span>
+            <span class="chip">Raycast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">~/setup — zsh</span>
+        </div>
+        <pre class="terminal-body"><code><span class="prompt">➜</span> <span class="path">~/setup</span> neofetch
+<span class="key">OS:</span>       Windows 11 Pro 24H2
+<span class="key">Host:</span>     PC Spécialiste Recoil 16 + XMG Oasis
+<span class="key">CPU:</span>      Intel Core Ultra 9 275HX (24) @ 5.4GHz
+<span class="key">GPU:</span>      NVIDIA GeForce RTX 5090 Laptop
+<span class="key">Memory:</span>   64 GiB DDR5
+<span class="key">Cooling:</span>  XMG Oasis — external water loop
+<span class="key">Display:</span>  2560x1600 @ 240Hz Mini-LED
+<span class="key">Uptime:</span>   <span id="uptime">calcul...</span>
+<span class="prompt">➜</span> <span class="path">~/setup</span> <span class="cursor-blink">█</span></code></pre>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section section-alt">
+      <div class="section-header">
+        <p class="eyebrow">04 — Ambiance</p>
+        <h2>La <span class="gradient-text">vibe</span></h2>
+        <p class="section-desc">RGB maîtrisé, lumière indirecte, ambiance feutrée. Le setup vit avec la pièce.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item" style="--hue: 260"><div class="gallery-inner"><span class="gallery-num">01</span><span class="gallery-label">Ambiance nuit</span></div></div>
+        <div class="gallery-item" style="--hue: 180"><div class="gallery-inner"><span class="gallery-num">02</span><span class="gallery-label">Watercooling</span></div></div>
+        <div class="gallery-item" style="--hue: 310"><div class="gallery-inner"><span class="gallery-num">03</span><span class="gallery-label">RGB sync</span></div></div>
+        <div class="gallery-item" style="--hue: 220"><div class="gallery-inner"><span class="gallery-num">04</span><span class="gallery-label">Bureau clean</span></div></div>
+        <div class="gallery-item" style="--hue: 150"><div class="gallery-inner"><span class="gallery-num">05</span><span class="gallery-label">Clavier macro</span></div></div>
+        <div class="gallery-item" style="--hue: 30"><div class="gallery-inner"><span class="gallery-num">06</span><span class="gallery-label">Golden hour</span></div></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="cta">
+        <h2>On en parle ?</h2>
+        <p>Des questions sur le setup, les composants, la config software ? N'hésite pas.</p>
+        <a href="#hero" class="btn btn-primary">
+          <span>Retour en haut</span>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> — Crafted with passion. Built with HTML · CSS · JS.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
